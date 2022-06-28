@@ -118,7 +118,7 @@ const MainLayout = ({
           className={classes.iconContainer}
         >
           <img
-            style={{ transform: [{ rotate: "180deg" }] }}
+            style={{ transform: [{ rotate: '180deg' }] }}
             className={classes.icon}
             src={ArrowIcon}
             alt=""

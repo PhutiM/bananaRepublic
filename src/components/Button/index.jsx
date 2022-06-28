@@ -7,10 +7,22 @@ const FormButton = ({ text, cancelOnClick, saveOnClick, backgroundColor }) => {
   const ColorButton = styled(Button)(({ theme }) => ({
     color: 'white',
     backgroundColor: backgroundColor,
+    width: '100%',
+    marginTop: 20,
+    height: 50,
+    marginBottom: 40,
     '&:hover': {
       backgroundColor: backgroundColor,
     },
-    width: 150,
+    ["@media (min-width: 780px)"]: {
+      color: 'white',
+      backgroundColor: backgroundColor,
+      width: 150,
+      height: 50,
+      '&:hover': {
+        backgroundColor: backgroundColor,
+      },
+    }
   }));
 
     return (

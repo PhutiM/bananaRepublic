@@ -112,22 +112,11 @@ export const useStyles = makeStyles((theme) => ({
       justifyContent: "center",
     },
   },
-
-  // column2: {
-  //   ["@media (min-width: 780px)"]: {
-  //     // eslint-disable-line no-useless-computed-key
-  //     display: "flex",
-  //     flexDirection: "column",
-  //     backgroundColor: colors.white,
-  //     width: "60vw",
-  //     alignItems: "center",
-  //     justifyContent: "center",
-  //   },
-  // },
   simpleTextArea: {
     alignSelf: "center",
     marginLeft: "20% ",
     fontFamily: "Roboto, Helvetica, sans-serif",
+    marginBottom: "30%"
   },
 }));
 

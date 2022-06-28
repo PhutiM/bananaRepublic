@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { makeStyles } from "@mui/styles";
 import * as colors from "../../assets/styles/Colors";
+import InputLabel from "@mui/material/InputLabel";
 
 export const useStyles = makeStyles((theme) => ({
   radioIcons: {
@@ -19,22 +19,27 @@ export const useStyles = makeStyles((theme) => ({
       display: "flex",
       flexDirection: "row",
       width: "100%",
-      marginLeft: 20,
+      // marginLeft: 20,
     },
   },
   label: {
-    display: "flex",
-    flexDirection: "row",
-    marginRight: 20,
-    alignSelf: "flex-start",
-    width: "40%",
-    color: colors.paleGrey,
+    marginLeft: '3%',
+    marginTop: "2%",
+    ["@media (min-width: 780px)"]: {
+      // eslint-disable-line no-useless-computed-key
+      display: "flex",
+      marginRight: 20,
+      alignSelf: "flex-start",
+      textAlign: "left",
+      width: "40%",
+      fontFamily: "Roboto, Helvetica, sans-serif",
+    },
   },
   icons: {
-    display: 'flex',
+    display: "flex",
     marginTop: 10,
     marginBottom: 20,
-    width: '100%',
+    width: "100%",
     alignSelf: "flex-start",
     fontFamily: "Roboto, Helvetica, sans-serif",
     float: "right",
@@ -77,23 +82,30 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RadioIcons = ({ label, items }) => {
+const RadioIcons = ({ label, items, isSelected, setIsSelected }) => {
   const classes = useStyles();
-
-  const [isSelected, setIsSelected] = useState(-1);
 
   return (
     <div className={classes.main}>
-      <p className={classes.label}>{label}</p>
+      <div className={classes.label}>
+      <InputLabel>{label}</InputLabel>
+      </div>
       <div className={classes.icons}>
-      {items.map((item, index) => (
-        <div className={classes.iconMain}>
-          <a onClick={() => setIsSelected(index)} className={index === isSelected ? classes.iconContainerSelected:  classes.iconContainer}>
-            <img className={classes.radioIcons} src={item.icon} />
-          </a>
-          <p className={classes.desc}>{item.desc}</p>
-        </div>
-      ))}
+        {items.map((item, index) => (
+          <div className={classes.iconMain}>
+            <a
+              onClick={() => setIsSelected(index)}
+              className={
+                index === isSelected
+                  ? classes.iconContainerSelected
+                  : classes.iconContainer
+              }
+            >
+              <img className={classes.radioIcons} src={item.icon} />
+            </a>
+            <p className={classes.desc}>{item.desc}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

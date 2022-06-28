@@ -78,7 +78,6 @@ export const useStyles = makeStyles((theme) => ({
   button: {
     display: "flex",
     flexDirection: "column",
-    // float: "right",
     alignSelf: "center",
     justifyContent: "space-between",
     marginTop: 20,
@@ -97,8 +96,12 @@ export const useStyles = makeStyles((theme) => ({
     marginLeft: 20,
   },
   formArea: {
-    marginLeft: "20% ",
-    fontFamily: "Roboto, Helvetica, sans-serif",
+    margin: "15%",
+    ["@media (min-width: 780px)"]: {
+      // eslint-disable-line no-useless-computed-key
+      marginLeft: "20%",
+      fontFamily: "Roboto, Helvetica, sans-serif",
+    },
   },
 }));
 
@@ -114,9 +117,13 @@ const Form = () => {
   };
 
   const [formValues, setFormValues] = useState(initalState);
+  const [isSelectedGender, setIsSelectedGender] = useState(-1);
+  const [isSelectedCard, setIsSelectedCard] = useState(-1);
 
   const clearForm = () => {
     setFormValues(initalState);
+    setIsSelectedCard(-1);
+    setIsSelectedGender(-1);
   };
 
   const animatedProps = useSpring({
@@ -159,8 +166,10 @@ const Form = () => {
         value={formValues.firstName}
         label={"Name"}
         placeHolder={"Name"}
+        formValues={formValues}
+        setFormValues={setFormValues}
       />
-      <RadioIcons items={genderItems} label={"Gender"} />
+      <RadioIcons isSelected={isSelectedGender}  setIsSelected={setIsSelectedGender} items={genderItems} label={"Gender"} />
       <LabledText
         value={formValues.dob}
         label={"Date of Birth"}
@@ -193,7 +202,7 @@ const Form = () => {
         formValues={formValues}
         setFormValues={setFormValues}
       />
-      <RadioIcons items={membershipItems} label={"Membership"} />
+      <RadioIcons isSelected={isSelectedCard} setIsSelected={setIsSelectedCard}  items={membershipItems} label={"Membership"} />
       <div className={classes.button}>
         <div className={classes.buttonMarginLeft}>
           <Button

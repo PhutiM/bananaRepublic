@@ -28,8 +28,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   label: {
     marginLeft: '3%',
-    marginTop: "8%",
-
+    marginTop: "2%",
     ["@media (min-width: 780px)"]: {
       // eslint-disable-line no-useless-computed-key
       display: "flex",
