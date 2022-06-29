@@ -84,6 +84,7 @@ export const useStyles = makeStyles((theme) => ({
     width: 25,
     height: 25,
     alignSelf: "center",
+    transform: [{ rotate: '180deg' }],
   },
   image: {
     marginBottom: "15%",
@@ -105,6 +106,13 @@ const MainLayout = ({
 }) => {
   const classes = useStyles();
 
+  let rotation = !isAnimated ? 0 : 180;
+
+  let mobileRotation = !isAnimated ?  270: 90;
+
+  const matches = useMediaQuery('(min-width:600px)');
+
+
   return (
     <div className={classes.main}>
       <div className={classes.column1}>
@@ -118,7 +126,7 @@ const MainLayout = ({
           className={classes.iconContainer}
         >
           <img
-            style={{ transform: [{ rotate: '180deg' }] }}
+            style={matches ? {transform: `rotate(${rotation}deg)`}: {transform: `rotate(${mobileRotation}deg)`}}
             className={classes.icon}
             src={ArrowIcon}
             alt=""
