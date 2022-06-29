@@ -2,9 +2,9 @@ import TextField from "@mui/material/TextField";
 import { makeStyles } from "@mui/styles";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import { alpha, styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-  
+import { styled } from '@mui/material/styles';
+import * as colors from "../../assets/styles/Colors";
+
 export const useStyles = makeStyles((theme) => ({
   textInput: {
     display: "flex",
@@ -52,7 +52,7 @@ const RedditTextField = styled((props) => (
     position: 'relative',
     overflow: 'hidden',
     borderRadius: 4,
-    backgroundColor:'#fffff',
+    backgroundColor: colors.paleGrey,
     transition: theme.transitions.create([
       'border-color',
       'background-color',
@@ -85,7 +85,7 @@ const LabledText = ({ label, placeHolder, value, formValues, setFormValues, name
             onChange={handleChange}
             id="outlined-basic"
             label={placeHolder}
-            variant="outlined"
+            variant="filled"
           />
         </FormControl>
       </div>
