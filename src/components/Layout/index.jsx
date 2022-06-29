@@ -27,6 +27,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     width: "100vw",
     paddingBottom: 50,
+    paddingTop: '10%',
     ["@media (min-width: 780px)"]: {
       // eslint-disable-line no-useless-computed-key
       display: "flex",
@@ -39,6 +40,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   column2: {
+    paddingTop: '10%',
     ["@media (min-width: 780px)"]: {
       // eslint-disable-line no-useless-computed-key
       display: "flex",

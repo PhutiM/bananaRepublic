@@ -83,6 +83,7 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: "400",
   },
   column2: {
+    paddingTop: '10%',
     backgroundColor: colors.tangerine,
     display: "flex",
     flexDirection: "column",
@@ -103,6 +104,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: colors.charcoalGrey,
     display: "flex",
     flexDirection: "column",
+    paddingTop: '10%',
     ["@media (min-width: 780px)"]: {
       display: "flex",
       flexDirection: "column",

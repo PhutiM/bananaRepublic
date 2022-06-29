@@ -2,7 +2,9 @@ import TextField from "@mui/material/TextField";
 import { makeStyles } from "@mui/styles";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-
+import { alpha, styled } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+  
 export const useStyles = makeStyles((theme) => ({
   textInput: {
     display: "flex",
@@ -42,6 +44,26 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const RedditTextField = styled((props) => (
+  <TextField InputProps={{ disableUnderline: true }} {...props} />
+))(({ theme }) => ({
+  '& .MuiFilledInput-root': {
+    border: '1px solid #e2e2e1',
+    position: 'relative',
+    overflow: 'hidden',
+    borderRadius: 4,
+    backgroundColor:'#fffff',
+    transition: theme.transitions.create([
+      'border-color',
+      'background-color',
+      'box-shadow',
+    ]),
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+  },
+}));
+
 const LabledText = ({ label, placeHolder, value, formValues, setFormValues, name }) => {
   const classes = useStyles();
 
@@ -57,7 +79,7 @@ const LabledText = ({ label, placeHolder, value, formValues, setFormValues, name
 
       <div className={classes.textInput}>
         <FormControl fullWidth sx={{ m: 1 }}>
-          <TextField
+          <RedditTextField
             value={value}
             name={name}
             onChange={handleChange}
