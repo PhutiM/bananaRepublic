@@ -177,6 +177,7 @@ const Form = () => {
         name={"dob"}
         formValues={formValues}
         setFormValues={setFormValues}
+        date={true}
       />
       <LabledText
         value={formValues.email}

@@ -2,8 +2,9 @@ import TextField from "@mui/material/TextField";
 import { makeStyles } from "@mui/styles";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 import * as colors from "../../assets/styles/Colors";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 
 export const useStyles = makeStyles((theme) => ({
   textInput: {
@@ -29,7 +30,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   label: {
-    marginLeft: '3%',
+    marginLeft: "3%",
     marginTop: "2%",
     ["@media (min-width: 780px)"]: {
       // eslint-disable-line no-useless-computed-key
@@ -47,29 +48,38 @@ export const useStyles = makeStyles((theme) => ({
 const RedditTextField = styled((props) => (
   <TextField InputProps={{ disableUnderline: true }} {...props} />
 ))(({ theme }) => ({
-  '& .MuiFilledInput-root': {
-    border: '1px solid #e2e2e1',
-    position: 'relative',
-    overflow: 'hidden',
+  "& .MuiFilledInput-root": {
+    border: "1px solid #e2e2e1",
+    position: "relative",
+    overflow: "hidden",
     borderRadius: 4,
     backgroundColor: colors.paleGrey,
     transition: theme.transitions.create([
-      'border-color',
-      'background-color',
-      'box-shadow',
+      "border-color",
+      "background-color",
+      "box-shadow",
     ]),
-    '&:hover': {
-      backgroundColor: 'transparent',
+    "&:hover": {
+      backgroundColor: "transparent",
     },
   },
 }));
 
-const LabledText = ({ label, placeHolder, value, formValues, setFormValues, name }) => {
+
+const LabledText = ({
+  label,
+  placeHolder,
+  value,
+  formValues,
+  setFormValues,
+  name,
+  date,
+}) => {
   const classes = useStyles();
 
-  const handleChange = (e) => {    
-    setFormValues({...formValues, [e.target.name]: e.target.value });
-  }
+  const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className={classes.main}>
@@ -79,14 +89,25 @@ const LabledText = ({ label, placeHolder, value, formValues, setFormValues, name
 
       <div className={classes.textInput}>
         <FormControl fullWidth sx={{ m: 1 }}>
-          <RedditTextField
-            value={value}
-            name={name}
-            onChange={handleChange}
-            id="outlined-basic"
-            label={placeHolder}
-            variant="filled"
-          />
+          {!date ? (
+            <RedditTextField
+              value={value}
+              name={name}
+              onChange={handleChange}
+              id="outlined-basic"
+              label={placeHolder}
+              variant="filled"
+            />
+          ) : (
+            <RedditTextField
+              value={value}
+              name={name}
+              onChange={handleChange}
+              id="outlined-basic"
+              label={placeHolder}
+              variant="filled"
+            />
+          )}
         </FormControl>
       </div>
     </div>

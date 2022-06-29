@@ -92,7 +92,7 @@ const RadioIcons = ({ label, items, isSelected, setIsSelected }) => {
       </div>
       <div className={classes.icons}>
         {items.map((item, index) => (
-          <div className={classes.iconMain}>
+          <div key={index} className={classes.iconMain}>
             <a
               onClick={() => setIsSelected(index)}
               className={
